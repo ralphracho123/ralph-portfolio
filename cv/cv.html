@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ralph Lorence Racho — Curriculum Vitae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+<style>
+/* ---------------------------------------------------------
+   Print-first CV. Edit the text below, then re-run the
+   build command in README.md to regenerate the PDF.
+   --------------------------------------------------------- */
+:root {
+  --ink:   #131A2E;
+  --soft:  #434C66;
+  --faint: #8A90A3;
+  --coral: #C9441C;
+  --rule:  #D9D3C6;
+}
+
+@page { size: A4; margin: 11mm 13mm; }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 9pt;
+  line-height: 1.38;
+  color: var(--ink);
+  background: #fff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* On screen only: show the sheet on a grey desk. */
+@media screen {
+  body { background: #E8E4DA; padding: 24px 0; }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 13mm 14mm;
+    background: #fff;
+    box-shadow: 0 12px 40px rgba(0,0,0,.2);
+  }
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+
+/* ---------- header ---------- */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 9px;
+  border-bottom: 2.5px solid var(--ink);
+}
+.name {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 27pt;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.title {
+  margin-top: 2px;
+  font-size: 9.4pt;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+.head-contact {
+  text-align: right;
+  font-size: 8.6pt;
+  color: var(--soft);
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.head-contact a { color: var(--soft); text-decoration: none; }
+
+/* ---------- layout ---------- */
+.cols {
+  display: flex;
+  gap: 9mm;
+  margin-top: 10px;
+}
+.main { flex: 1 1 auto; min-width: 0; }
+.side { flex: 0 0 52mm; }
+
+section { margin-bottom: 9px; break-inside: avoid; }
+
+h2 {
+  font-size: 8.4pt;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--coral);
+  padding-bottom: 3px;
+  margin-bottom: 7px;
+  border-bottom: 1px solid var(--rule);
+}
+
+p { margin: 0 0 6px; }
+.lede { color: var(--soft); }
+
+/* ---------- entries ---------- */
+.entry { margin-bottom: 8px; break-inside: avoid; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.entry h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 12pt;
+  font-weight: 600;
+}
+.when {
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.role {
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--coral);
+  margin: 1px 0 3px;
+}
+.meta {
+  font-size: 8.4pt;
+  color: var(--faint);
+  margin: 2px 0 0;
+}
+.meta a { color: var(--faint); }
+
+ul.bullets { margin: 3px 0 0; padding-left: 14px; }
+ul.bullets li { margin-bottom: 2px; color: var(--soft); }
+
+/* ---------- side column ---------- */
+.side h2 { margin-top: 0; }
+.skill-group { margin-bottom: 9px; }
+.skill-group strong {
+  display: block;
+  font-size: 8.8pt;
+  margin-bottom: 2px;
+}
+.skill-group span { color: var(--soft); font-size: 8.8pt; }
+
+.side ul.plain li {
+  padding: 3px 0;
+  border-bottom: 1px solid #EFEBE2;
+  color: var(--soft);
+  font-size: 8.8pt;
+}
+.side ul.plain { padding: 0; list-style: none; margin: 0; }
+.side ul.plain li:last-child { border-bottom: 0; }
+
+.foot {
+  margin-top: 12px;
+  padding-top: 7px;
+  border-top: 1px solid var(--rule);
+  font-size: 8pt;
+  color: var(--faint);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="head">
+    <div>
+      <h1 class="name">Ralph Lorence Racho</h1>
+      <p class="title">Project Manager · UI/UX Designer · QA Tester</p>
+    </div>
+    <div class="head-contact">
+      <a href="mailto:ralphracho123@gmail.com">ralphracho123@gmail.com</a><br />
+      <a href="https://github.com/ralphracho123">github.com/ralphracho123</a><br />
+      <a href="https://www.facebook.com/ralph.racho.7">facebook.com/ralph.racho.7</a><br />
+      Cebu, Philippines
+    </div>
+  </header>
+
+  <div class="cols">
+
+    <!-- ============ MAIN COLUMN ============ -->
+    <div class="main">
+
+      <section>
+        <h2>Profile</h2>
+        <p class="lede">
+          Information Technology student who works at the point where a project holds
+          together — the schedule, the screens and the defects. Three team builds, three
+          seats: running the project on a browser game, designing the interface on an
+          evaluation platform, and owning quality assurance on a lost-and-found service.
+        </p>
+      </section>
+
+      <section>
+        <h2>Project Experience</h2>
+
+        <div class="entry">
+          <div class="entry-top">
+            <h3>Emberfall</h3>
+            <span class="when">2026</span>
+          </div>
+          <p class="role">Project Manager</p>
+          <ul class="bullets">
+            <li>Led a student team through a full turn-based RPG build, from concept and scope to a playable public release.</li>
+            <li>Divided the work across the team, tracked progress against the deadline, and decided what shipped and what was cut.</li>
+            <li>Held the requirement that the game run properly on phones and tablets — touch layout, landscape and fullscreen — not only on desktop.</li>
+          </ul>
+          <p class="meta">emberfall-rho.vercel.app · JavaScript, HTML5, CSS3, Web Audio API, SVG</p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <h3>Evaluate CEC</h3>
+            <span class="when">2026</span>
+          </div>
+          <p class="role">UI/UX Designer</p>
+          <ul class="bullets">
+            <li>One of the designers on a web platform replacing the paper teacher-evaluation process at Cebu Eastern College.</li>
+            <li>Designed the evaluation flow end to end: registration by program, year level and section, through star ratings and optional anonymous comments to submission.</li>
+            <li>Paced a long form so it stays completable and made the path to "submitted" obvious on phones as well as desktops; contributed to the administrator dashboard layout.</li>
+          </ul>
+          <p class="meta">evaluate-cec.vercel.app · UI design, user flows, forms, Figma</p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <h3>FindIt</h3>
+            <span class="when">2026</span>
+          </div>
+          <p class="role">Tester / Quality Assurance</p>
+          <ul class="bullets">
+            <li>Owned QA for a community lost-and-found platform covering Cebu, Manila, Davao and twenty more cities.</li>
+            <li>Wrote and ran test cases across thirteen item categories, the search and the report flow.</li>
+            <li>Concentrated on the claim path — proof submission, owner verification, and the ways a wrong claim could pass — documenting each defect with its conditions, then verifying fixes and running regression on desktop and mobile.</li>
+          </ul>
+          <p class="meta">findit-ph.vercel.app · Test planning, bug reporting, regression, cross-device</p>
+        </div>
+
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <div class="entry">
+          <div class="entry-top">
+            <h3>Bachelor of Science in Information Technology</h3>
+            <span class="when">Ongoing</span>
+          </div>
+          <p class="meta">Cebu Eastern College — Cebu City, Philippines</p>
+          <ul class="bullets">
+            <li>Coursework in software development, systems analysis and design, and collaborative project work.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============ SIDE COLUMN ============ -->
+    <aside class="side">
+
+      <section>
+        <h2>Core Skills</h2>
+        <div class="skill-group">
+          <strong>Project Management</strong>
+          <span>Scoping · task breakdown · scheduling · delegation · documentation · stand-ups</span>
+        </div>
+        <div class="skill-group">
+          <strong>UI / UX Design</strong>
+          <span>Wireframing · user flows · prototyping · design systems · usability</span>
+        </div>
+        <div class="skill-group">
+          <strong>Quality Assurance</strong>
+          <span>Test planning · test cases · bug reporting · regression · edge cases · cross-device</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tools</h2>
+        <ul class="plain">
+          <li>Figma</li>
+          <li>Git &amp; GitHub</li>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Vercel</li>
+          <li>Google Workspace</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Strengths</h2>
+        <ul class="plain">
+          <li>Keeping a peer team aligned</li>
+          <li>Turning dense workflows into usable screens</li>
+          <li>Clear, reproducible defect reports</li>
+          <li>Mobile-first thinking</li>
+          <li>Finishing to a deadline</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Languages</h2>
+        <ul class="plain">
+          <li>English</li>
+          <li>Filipino</li>
+          <li>Cebuano</li>
+        </ul>
+      </section>
+
+    </aside>
+  </div>
+
+  <div class="foot">
+    <span>Ralph Lorence Racho — Curriculum Vitae</span>
+    <span>ralphracho123@gmail.com</span>
+  </div>
+
+</div>
+</body>
+</html>

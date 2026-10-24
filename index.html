@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ralph Lorence Racho — Project Manager &amp; UI/UX Designer</title>
+<meta name="description" content="Portfolio of Ralph Lorence Racho — project manager, UI/UX designer and QA tester. Selected work: Emberfall, Evaluate CEC, FindIt." />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#FDFBF5" id="themeColorMeta" />
+<meta property="og:title" content="Ralph Lorence Racho — Portfolio" />
+<meta property="og:description" content="Project manager, UI/UX designer and QA tester." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300..800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>
+  /* Set the theme before first paint so there is no flash of the wrong one. */
+  (function () {
+    try {
+      var saved = localStorage.getItem("theme");
+      var prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute(
+        "data-theme", saved || (prefers ? "dark" : "light")
+      );
+    } catch (e) { /* storage blocked — keep the default */ }
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="site-header" id="siteHeader">
+  <div class="shell nav-row">
+    <a class="wordmark" href="#top">
+      <span class="wordmark__mark" aria-hidden="true">R</span>
+      <span class="wordmark__text">Ralph&nbsp;L.&nbsp;Racho</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#path">Path</a></li>
+        <li><a href="#cv">CV</a></li>
+      </ul>
+      <a class="btn btn--ink btn--sm" href="#contact">Get in touch</a>
+    </nav>
+
+    <div class="nav-tools">
+      <button class="theme-toggle" id="themeToggle" type="button"
+              aria-label="Switch to dark theme" aria-pressed="false" title="Toggle theme">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__thumb">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.4"/>
+              <g class="rays">
+                <path d="M12 1.6v3"/><path d="M12 19.4v3"/>
+                <path d="M1.6 12h3"/><path d="M19.4 12h3"/>
+                <path d="M4.6 4.6l2.1 2.1"/><path d="M17.3 17.3l2.1 2.1"/>
+                <path d="M19.4 4.6l-2.1 2.1"/><path d="M6.7 17.3l-2.1 2.1"/>
+              </g>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.7 8.7 0 1 0 10.9 10.9z"/>
+            </svg>
+          </span>
+        </span>
+      </button>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-mobile" id="mobileNav" hidden>
+    <nav aria-label="Mobile">
+      <ul>
+        <li><a href="#about"><em>01</em> About</a></li>
+        <li><a href="#skills"><em>02</em> Skills</a></li>
+        <li><a href="#work"><em>03</em> Work</a></li>
+        <li><a href="#path"><em>04</em> Path</a></li>
+        <li><a href="#cv"><em>05</em> CV</a></li>
+        <li><a href="#contact"><em>06</em> Contact</a></li>
+      </ul>
+    </nav>
+    <p class="nav-mobile__foot">Project management · UI/UX · QA</p>
+  </div>
+</header>
+<div class="nav-scrim" id="navScrim" hidden></div>
+
+<main id="main">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero__aura" aria-hidden="true"><i></i><i></i></div>
+
+  <div class="shell hero__grid">
+
+    <div class="hero__text">
+      <p class="eyebrow reveal">Portfolio — Edition 01 / 2026</p>
+      <h1 class="hero__title">
+        <span class="line"><span>Ralph</span></span>
+        <span class="line"><span>Lorence</span></span>
+        <span class="line"><span class="hero__title-accent">Racho</span></span>
+      </h1>
+      <p class="hero__lede reveal">
+        I keep projects moving and interfaces honest — planning the work as a
+        <strong>project manager</strong>, shaping it as a <strong>UI/UX designer</strong>,
+        and breaking it on purpose as a <strong>tester</strong> before anyone else can.
+      </p>
+      <div class="hero__cta reveal">
+        <a class="btn btn--coral" href="#work">See selected work</a>
+        <a class="btn btn--ghost" href="#contact">Contact me</a>
+      </div>
+    </div>
+
+    <figure class="hero__photo reveal">
+      <div class="photo-frame" data-parallax="0.06">
+        <img src="assets/ralph.png" width="760" height="1000" decoding="async"
+             alt="Portrait of Ralph Lorence Racho in a dark suit and tie." />
+      </div>
+
+      <figcaption class="availability">
+        <p class="availability__head">
+          <span class="dot" aria-hidden="true"></span>
+          Open for Opportunities
+        </p>
+        <p class="availability__body">
+          Open to internships and junior developer roles — Cebu or remote.
+        </p>
+        <a class="availability__link" href="#contact">
+          <span aria-hidden="true">&#8594;</span> Get in touch
+        </a>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Project Management</span><span class="sep">/</span>
+      <span class="outline">UI / UX Design</span><span class="sep">/</span>
+      <span>Quality Assurance</span><span class="sep">/</span>
+      <span class="outline">Team Coordination</span><span class="sep">/</span>
+      <span>Prototyping</span><span class="sep">/</span>
+      <span class="outline">Testing</span><span class="sep">/</span>
+      <span>Project Management</span><span class="sep">/</span>
+      <span class="outline">UI / UX Design</span><span class="sep">/</span>
+      <span>Quality Assurance</span><span class="sep">/</span>
+      <span class="outline">Team Coordination</span><span class="sep">/</span>
+      <span>Prototyping</span><span class="sep">/</span>
+      <span class="outline">Testing</span><span class="sep">/</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="section section--about" id="about">
+  <div class="shell">
+    <div class="section-head reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+
+    <div class="about__grid">
+      <p class="about__big reveal">
+        A project only ships when someone holds the thread — the schedule, the
+        screens, and the bugs nobody wants to look at.
+      </p>
+
+      <div class="about__body reveal">
+        <p>
+          I'm Ralph, a student developer based in Cebu who tends to end up where the
+          coordination happens. On <strong>Emberfall</strong> I ran the project: scoping
+          the game, splitting the build across the team, and keeping the deadline honest
+          through to a playable release.
+        </p>
+        <p>
+          On <strong>Evaluate CEC</strong> I worked as one of the UI/UX designers, turning
+          a dense evaluation workflow into screens students can finish without a manual. On
+          <strong>FindIt</strong> I tested — writing cases, hunting edge cases in the report
+          and claim flow, and reporting what broke before release.
+        </p>
+        <p>
+          Three different seats, one habit: understand the whole thing, then make the
+          next step obvious for everyone else.
+        </p>
+      </div>
+
+      <ul class="about__stats reveal">
+        <li><b data-count="3">0</b><span>Team projects</span></li>
+        <li><b data-count="3">0</b><span>Roles held</span></li>
+        <li><b data-count="3">0</b><span>Sites live</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section class="section section--alt" id="skills">
+  <div class="shell">
+    <div class="section-head reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+    </div>
+
+    <div class="skills__grid">
+      <article class="skill-card reveal">
+        <h3>Project Management</h3>
+        <p>Scoping, task breakdown, timelines and keeping a team of peers aligned from kickoff to handover.</p>
+        <ul class="tags">
+          <li>Planning</li><li>Scheduling</li><li>Task delegation</li>
+          <li>Documentation</li><li>Stand-ups</li>
+        </ul>
+      </article>
+
+      <article class="skill-card skill-card--accent reveal">
+        <h3>UI / UX Design</h3>
+        <p>Wireframes, user flows and interface systems that stay consistent across every screen in the build.</p>
+        <ul class="tags">
+          <li>Figma</li><li>Wireframing</li><li>Prototyping</li>
+          <li>Design systems</li><li>Usability</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <h3>Quality Assurance</h3>
+        <p>Structured test cases, exploratory passes and clear, reproducible bug reports developers can act on.</p>
+        <ul class="tags">
+          <li>Test cases</li><li>Bug reporting</li><li>Regression</li>
+          <li>Cross-device</li><li>Edge cases</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <h3>Tools &amp; Tech</h3>
+        <p>Comfortable in the stack the team actually uses — and able to read the code well enough to test it.</p>
+        <ul class="tags">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li>
+          <li>Git &amp; GitHub</li><li>Vercel</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WORK ===================== -->
+<section class="section" id="work">
+  <div class="shell">
+    <div class="section-head reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-sub">Three team projects, three seats at the table.</p>
+    </div>
+
+    <div class="work__list">
+
+      <!-- EMBERFALL -->
+      <article class="project reveal">
+        <div class="project__body">
+          <p class="project__role"><span class="project__index">01</span> Project Manager</p>
+          <h3 class="project__title">Emberfall</h3>
+          <p class="project__tagline">
+            A dungeon awaits beneath the hills. A turn-based RPG that runs in any browser.
+          </p>
+          <p class="project__desc">
+            A complete turn-based role-playing game built as a single HTML file — pick a
+            class, then fight down through fifteen waves of procedurally assembled enemies.
+            Combat runs on a four-action loop of attack, skill, defend and item, backed by
+            levelling, status effects, a combat log and a leaderboard.
+          </p>
+          <p class="project__desc">
+            I ran the project: setting the scope, dividing the build across the team,
+            tracking progress against the deadline, and deciding what made the cut. A lot of
+            that was holding the line on it working properly on a phone — touch layout,
+            landscape and fullscreen — and not just on a laptop.
+          </p>
+          <ul class="tags tags--solid">
+            <li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Web Audio API</li><li>SVG</li>
+          </ul>
+          <p class="project__links">
+            <a class="link-arrow" href="https://emberfall-rho.vercel.app/" target="_blank" rel="noopener">
+              Play Emberfall <span aria-hidden="true">&#8599;</span>
+            </a>
+            <span class="project__year">2026</span>
+          </p>
+        </div>
+
+        <div class="project__visual">
+          <div class="mockup">
+            <div class="mockup__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="mockup__screen">
+              <img src="assets/projects/emberfall.jpg" loading="lazy" decoding="async"
+                   alt="Emberfall title screen: a pixel-art castle at night beneath a crescent moon, with the game menu." />
+              <video class="mockup__video" data-src="assets/projects/emberfall.mp4"
+                     muted loop playsinline preload="none" aria-hidden="true"></video>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EVALUATE CEC -->
+      <article class="project project--flip reveal">
+        <div class="project__body">
+          <p class="project__role"><span class="project__index">02</span> UI / UX Designer</p>
+          <h3 class="project__title">Evaluate CEC</h3>
+          <p class="project__tagline">
+            Teacher evaluations for Cebu Eastern College, with sentiment analysis on every comment.
+          </p>
+          <p class="project__desc">
+            A web platform replacing the paper teacher-evaluation process at Cebu Eastern
+            College. Students register with their program, year level and section, see only
+            the teachers assigned to them, rate each out of five stars and leave an optional
+            comment — anonymously if they prefer. Administrators get a live dashboard of
+            top-rated teachers, program averages and sentiment breakdowns.
+          </p>
+          <p class="project__desc">
+            I was one of the UI/UX designers. The hard part was the shape of the form: an
+            evaluation is long by nature, so the work went into pacing it, keeping labels
+            plain, and making the path from start to submitted obvious on a phone as well
+            as a desktop.
+          </p>
+          <ul class="tags tags--solid">
+            <li>UI design</li><li>User flows</li><li>Forms</li><li>Dashboard</li><li>Figma</li>
+          </ul>
+          <p class="project__links">
+            <a class="link-arrow" href="https://evaluate-cec.vercel.app/" target="_blank" rel="noopener">
+              Visit Evaluate CEC <span aria-hidden="true">&#8599;</span>
+            </a>
+            <span class="project__year">2026</span>
+          </p>
+        </div>
+
+        <div class="project__visual">
+          <div class="mockup">
+            <div class="mockup__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="mockup__screen">
+              <img src="assets/projects/evaluate-cec.jpg" loading="lazy" decoding="async"
+                   alt="Evaluate CEC home page: smarter teacher evaluations, beside a sample star rating and sentiment card." />
+              <video class="mockup__video" data-src="assets/projects/evaluate-cec.mp4"
+                     muted loop playsinline preload="none" aria-hidden="true"></video>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- FINDIT -->
+      <article class="project reveal">
+        <div class="project__body">
+          <p class="project__role"><span class="project__index">03</span> Tester / QA</p>
+          <h3 class="project__title">FindIt</h3>
+          <p class="project__tagline">
+            A lost and found network for the Philippines. Report an item, search, get reunited.
+          </p>
+          <p class="project__desc">
+            A community lost-and-found platform covering Cebu, Manila, Davao and twenty more
+            cities. Items are filed across thirteen categories and searched by category,
+            location or keyword; when a match looks right the claimant submits proof, the
+            owner verifies it, and the two arrange a meetup through the site instead of
+            trading phone numbers in public.
+          </p>
+          <p class="project__desc">
+            I handled testing. The claim flow is where it counts — proof, verification,
+            and every way a wrong claim could slip through — so I worked through those paths
+            deliberately, documented what broke and under what conditions, and re-checked
+            fixes before they were called done.
+          </p>
+          <ul class="tags tags--solid">
+            <li>Test planning</li><li>Bug reports</li><li>Regression</li><li>Edge cases</li><li>Cross-device</li>
+          </ul>
+          <p class="project__links">
+            <a class="link-arrow" href="https://findit-ph.vercel.app/" target="_blank" rel="noopener">
+              Visit FindIt <span aria-hidden="true">&#8599;</span>
+            </a>
+            <span class="project__year">2026</span>
+          </p>
+        </div>
+
+        <div class="project__visual">
+          <div class="mockup">
+            <div class="mockup__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="mockup__screen">
+              <img src="assets/projects/findit.jpg" loading="lazy" decoding="async"
+                   alt="FindIt home page: lost something, find it here, over report and search controls." />
+              <video class="mockup__video" data-src="assets/projects/findit.mp4"
+                     muted loop playsinline preload="none" aria-hidden="true"></video>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PATH ===================== -->
+<section class="section section--alt" id="path">
+  <div class="shell">
+    <div class="section-head reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Education &amp; experience</h2>
+    </div>
+
+    <ol class="timeline">
+      <li class="reveal">
+        <span class="timeline__when">2026</span>
+        <div class="timeline__card">
+          <h3>Project Manager — Emberfall</h3>
+          <p>Led the team through a full browser-game build, from concept and scope to a playable release running on desktop and mobile.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="timeline__when">2026</span>
+        <div class="timeline__card">
+          <h3>UI/UX Designer — Evaluate CEC</h3>
+          <p>Designed the evaluation screens and user flows for Cebu Eastern College's teacher-evaluation platform, alongside the rest of the design team.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="timeline__when">2026</span>
+        <div class="timeline__card">
+          <h3>Tester — FindIt</h3>
+          <p>Owned quality assurance for the lost-and-found platform: wrote and ran test cases, reported defects, and verified fixes ahead of release.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="timeline__when">Ongoing</span>
+        <div class="timeline__card">
+          <h3>Information Technology Student</h3>
+          <p>Coursework across software development, systems analysis and design, and collaborative project work.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== CV ===================== -->
+<section class="section section--cv" id="cv">
+  <div class="shell">
+    <div class="section-head reveal">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Curriculum vitae</h2>
+      <p class="section-sub">Read it here, or take a copy with you.</p>
+    </div>
+
+    <div class="cv__panel reveal">
+      <div class="cv__actions">
+        <button class="btn btn--cobalt" id="cvToggle" type="button"
+                aria-expanded="false" aria-controls="cvViewer">View CV</button>
+        <a class="btn btn--ink" href="assets/ralph-racho-cv.pdf" download>Download PDF</a>
+        <a class="cv__newtab" href="assets/ralph-racho-cv.pdf" target="_blank" rel="noopener">
+          Open in a new tab &#8599;
+        </a>
+      </div>
+
+      <div class="cv__viewer" id="cvViewer" hidden>
+        <div class="cv__embed" id="cvEmbed"></div>
+        <p class="cv__fallback">
+          Can't see the document? <a href="assets/ralph-racho-cv.pdf" target="_blank" rel="noopener">Open the PDF directly</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section section--contact" id="contact">
+  <div class="shell">
+    <div class="section-head section-head--light reveal">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+
+    <div class="contact__grid">
+      <p class="contact__big reveal">
+        Got a project that needs someone to hold the thread?
+      </p>
+
+      <ul class="contact__list reveal">
+        <li>
+          <span class="contact__label">Email</span>
+          <a class="contact__value" href="mailto:ralphracho123@gmail.com">ralphracho123@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact__label">GitHub</span>
+          <a class="contact__value" href="https://github.com/ralphracho123" target="_blank" rel="noopener">github.com/ralphracho123</a>
+        </li>
+        <li>
+          <span class="contact__label">Facebook</span>
+          <a class="contact__value" href="https://www.facebook.com/ralph.racho.7" target="_blank" rel="noopener">facebook.com/ralph.racho.7</a>
+        </li>
+        <li>
+          <span class="contact__label">Location</span>
+          <span class="contact__value contact__value--plain">Cebu, Philippines</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="shell footer__grid">
+    <p class="footer__name">Ralph Lorence Racho</p>
+    <ul class="footer__links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="mailto:ralphracho123@gmail.com">Email</a></li>
+      <li><a href="https://github.com/ralphracho123" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.facebook.com/ralph.racho.7" target="_blank" rel="noopener">Facebook</a></li>
+    </ul>
+    <p class="footer__meta">&copy; <span id="year">2026</span> — Built with HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<a class="to-top" id="toTop" href="#top" aria-label="Back to top" hidden>&#8593;</a>
+
+<script src="script.js"></script>
+</body>
+</html>
