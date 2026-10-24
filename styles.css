@@ -189,15 +189,6 @@ a { color: inherit; }
 }
 
 /* ---------- 3. Typography helpers ---------- */
-.eyebrow {
-  font-size: clamp(.68rem, .3vw + .6rem, .78rem);
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--coral);
-  margin-bottom: 1.4rem;
-}
-
 .section-head {
   display: grid;
   grid-template-columns: auto 1fr;
