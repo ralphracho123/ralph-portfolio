@@ -17,12 +17,53 @@ $MAIN_X = $ML;  $MAIN_W = 330
 $SIDE_X = 398;  $SIDE_W = $PW - $MR - 398
 
 # colours (r g b, 0..1)
-$INK   = '0.075 0.102 0.180'
+$INK   = '0 0 0'
 $CORAL = '0.788 0.267 0.110'
-$SOFT  = '0.270 0.310 0.410'
-$FAINT = '0.540 0.560 0.640'
+$SOFT  = '0 0 0'
+$FAINT = '0 0 0'
 $RULE  = '0.855 0.835 0.790'
 
+# ------------------------------------------------------------------- portrait
+# The site portrait, cropped to 4:5 and re-encoded as JPEG so it can go into the
+# PDF as a /DCTDecode image. System.Drawing ships with Windows, so this still
+# needs nothing installed.
+Add-Type -AssemblyName System.Drawing
+$photoSrc = Join-Path (Split-Path $PSScriptRoot -Parent) 'assets\ralph.png'
+$jpeg = $null; $jpegW = 0; $jpegH = 0
+
+if (Test-Path $photoSrc) {
+  $src = [System.Drawing.Image]::FromFile($photoSrc)
+  try {
+    $ratio = 4.0 / 5.0
+    $cw = $src.Width; $ch = [int]($src.Width / $ratio)
+    if ($ch -gt $src.Height) { $ch = $src.Height; $cw = [int]($src.Height * $ratio) }
+    $cropX = [int](($src.Width  - $cw) / 2)
+    $cropY = [int](($src.Height - $ch) * 0.10)   # bias upward, as on the website
+
+    $jpegW = 540; $jpegH = [int]($jpegW / $ratio)
+    $bmp = New-Object System.Drawing.Bitmap $jpegW, $jpegH
+    $gfx = [System.Drawing.Graphics]::FromImage($bmp)
+    $gfx.InterpolationMode = 'HighQualityBicubic'
+    $gfx.Clear([System.Drawing.Color]::White)         # flatten any transparency
+    $gfx.DrawImage($src,
+      (New-Object System.Drawing.Rectangle 0, 0, $jpegW, $jpegH),
+      (New-Object System.Drawing.Rectangle $cropX, $cropY, $cw, $ch),
+      [System.Drawing.GraphicsUnit]::Pixel)
+    $gfx.Dispose()
+
+    $codec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() |
+             Where-Object { $_.MimeType -eq 'image/jpeg' }
+    $prm = New-Object System.Drawing.Imaging.EncoderParameters 1
+    $prm.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter(
+      [System.Drawing.Imaging.Encoder]::Quality, 88)
+    $ms = New-Object System.IO.MemoryStream
+    $bmp.Save($ms, $codec, $prm)
+    $jpeg = $ms.ToArray()
+    $ms.Dispose(); $bmp.Dispose()
+  } finally { $src.Dispose() }
+} else {
+  Write-Warning "No portrait at $photoSrc - building the CV without a photo."
+}
 # ------------------------------------------------------- Helvetica metrics
 # AFM widths (per 1000 units) for the characters we actually use. Only the
 # wrapped body text needs measuring; headings are single lines.
@@ -102,13 +143,22 @@ function Add-Rect {
   $null = $ops.AppendLine("$Color rg $([math]::Round($X,2)) $([math]::Round($PH - $Y - $H,2)) $([math]::Round($W,2)) $([math]::Round($H,2)) re f")
 }
 
+function Add-Frame {
+  param([double]$X, [double]$Y, [double]$W, [double]$H, [string]$Color, [double]$LW = 0.8)
+  $null = $ops.AppendLine("$Color RG $LW w $([math]::Round($X,2)) $([math]::Round($PH - $Y - $H,2)) $([math]::Round($W,2)) $([math]::Round($H,2)) re S")
+}
+
+function Add-Image {
+  param([double]$X, [double]$Y, [double]$W, [double]$H)
+  $null = $ops.AppendLine("q $([math]::Round($W,2)) 0 0 $([math]::Round($H,2)) $([math]::Round($X,2)) $([math]::Round($PH - $Y - $H,2)) cm /Im1 Do Q")
+}
 # =============================================================== CONTENT ====
 
 # ---- header
 $y = $MT + 18
 Add-Text 'Ralph Lorence Racho' $ML $y 'F3' 24 $INK
 $y += 13
-Add-Text 'PROJECT MANAGER  /  UI/UX DESIGNER  /  QA TESTER' $ML $y 'F2' 7.6 $CORAL 1.05
+Add-Text 'PROJECT MANAGER  /  UI/UX DESIGNER  /  QA TESTER' $ML $y 'F2' 7.6 $INK 1.05
 
 # contact, right aligned
 $contact = @('ralphracho123@gmail.com',
@@ -132,7 +182,7 @@ $sideY = $y
 # ---- helpers that lay out a column -----------------------------------------
 function Add-Heading {
   param([string]$Text, [double]$X, [double]$W, [ref]$Y)
-  Add-Text $Text.ToUpper() $X ($Y.Value) 'F2' 7.8 $CORAL 1.3
+  Add-Text $Text.ToUpper() $X ($Y.Value) 'F2' 7.8 $INK 1.3
   $Y.Value += 4.5
   Add-Rect $X ($Y.Value) $W 0.6 $RULE
   $Y.Value += 10
@@ -169,7 +219,7 @@ function Add-Entry {
     Add-Text $When ($X + $W - $whenW) ($Y.Value - 1) 'F2' 7.4 $FAINT 0.6
   }
   $Y.Value += 10.5
-  if ($Role) { Add-Text $Role $X ($Y.Value) 'F2' 8.4 $CORAL; $Y.Value += 11 }
+  if ($Role) { Add-Text $Role $X ($Y.Value) 'F2' 8.4 $INK; $Y.Value += 11 }
   foreach ($b in $Bullets) { Add-Bullet $b $X $W $Y }
   if ($Meta) {
     $Y.Value += 1.5
@@ -214,6 +264,15 @@ Add-Entry 'BS Information Technology' 'Ongoing' '' @(
 ) 'Cebu Eastern College - Cebu City, Philippines' $MAIN_X $MAIN_W $ref
 
 # ---- side column ------------------------------------------------------------
+# The portrait heads the narrow column; the main column keeps its full height.
+if ($jpeg) {
+  $phW = $SIDE_W
+  $phH = $phW * 5.0 / 4.0
+  Add-Image $SIDE_X $sideY $phW $phH
+  Add-Frame $SIDE_X $sideY $phW $phH $INK 0.8
+  $sideY += $phH + 18
+}
+
 $sref = [ref]$sideY
 
 Add-Heading 'Core Skills' $SIDE_X $SIDE_W $sref
@@ -264,11 +323,18 @@ $latin1 = [System.Text.Encoding]::GetEncoding(28591)
 $objects = @()
 $objects += "<< /Type /Catalog /Pages 2 0 R >>"
 $objects += "<< /Type /Pages /Kids [3 0 R] /Count 1 >>"
-$objects += "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 $PW $PH] /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> /Contents 4 0 R >>"
+$xobj = if ($jpeg) { ' /XObject << /Im1 8 0 R >>' } else { '' }
+$objects += "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 $PW $PH] /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >>$xobj >> /Contents 4 0 R >>"
 $objects += "<< /Length $($latin1.GetByteCount($content)) >>`nstream`n$content`nendstream"
 $objects += "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>"
 $objects += "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>"
 $objects += "<< /Type /Font /Subtype /Type1 /BaseFont /Times-Bold /Encoding /WinAnsiEncoding >>"
+
+# Latin-1 is a straight byte<->char map, so the JPEG survives the round trip
+# through the string builder untouched.
+if ($jpeg) {
+  $objects += "<< /Type /XObject /Subtype /Image /Width $jpegW /Height $jpegH /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length $($jpeg.Length) >>`nstream`n$($latin1.GetString($jpeg))`nendstream"
+}
 
 $pdf = New-Object System.Text.StringBuilder
 $null = $pdf.Append("%PDF-1.4`n%" + [char]0xE2 + [char]0xE3 + [char]0xCF + [char]0xD3 + "`n")

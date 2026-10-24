@@ -574,7 +574,7 @@ a { color: inherit; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, .78fr);
   gap: clamp(28px, 5vw, 70px);
   align-items: center;
   padding-bottom: clamp(56px, 8vw, 110px);
@@ -619,7 +619,7 @@ a { color: inherit; }
 
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; }
 
-.hero__photo { margin: 0; position: relative; }
+.hero__photo { margin: 0; position: relative; width: 100%; max-width: 400px; justify-self: end; }
 
 /* a coral block sits behind the portrait, offset to the top-right;
    the availability card takes the bottom-left corner */
@@ -1262,7 +1262,7 @@ a.contact__value:hover { color: var(--coral); transform: translateX(4px); }
 @media (max-width: 720px) {
   html { scroll-padding-top: 78px; }
   .hero__grid { grid-template-columns: 1fr; }
-  .hero__photo { order: -1; max-width: 340px; margin-bottom: 20px; }
+  .hero__photo { order: -1; max-width: 340px; margin-bottom: 20px; justify-self: start; }
   .photo-frame { border-radius: 20px; }
   .hero__photo::before { right: -10px; top: 26px; border-radius: 16px; }
   /* the card sits under the portrait on phones rather than over it */

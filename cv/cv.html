@@ -12,9 +12,9 @@
    build command in README.md to regenerate the PDF.
    --------------------------------------------------------- */
 :root {
-  --ink:   #131A2E;
-  --soft:  #434C66;
-  --faint: #8A90A3;
+  --ink:   #000000;
+  --soft:  #000000;
+  --faint: #000000;
   --coral: #C9441C;
   --rule:  #D9D3C6;
 }
@@ -70,7 +70,7 @@ h1, h2, h3 { margin: 0; line-height: 1.15; }
   font-weight: 600;
   letter-spacing: .13em;
   text-transform: uppercase;
-  color: var(--coral);
+  color: var(--ink);
 }
 .head-contact {
   text-align: right;
@@ -97,7 +97,7 @@ h2 {
   font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--coral);
+  color: var(--ink);
   padding-bottom: 3px;
   margin-bottom: 7px;
   border-bottom: 1px solid var(--rule);
@@ -132,7 +132,7 @@ p { margin: 0 0 6px; }
 .role {
   font-size: 9pt;
   font-weight: 700;
-  color: var(--coral);
+  color: var(--ink);
   margin: 1px 0 3px;
 }
 .meta {
@@ -144,6 +144,7 @@ p { margin: 0 0 6px; }
 
 ul.bullets { margin: 3px 0 0; padding-left: 14px; }
 ul.bullets li { margin-bottom: 2px; color: var(--soft); }
+ul.bullets li::marker { color: var(--coral); }   /* the one surviving accent */
 
 /* ---------- side column ---------- */
 .side h2 { margin-top: 0; }
@@ -152,6 +153,15 @@ ul.bullets li { margin-bottom: 2px; color: var(--soft); }
   display: block;
   font-size: 8.8pt;
   margin-bottom: 2px;
+}
+.side-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 10%;
+  border: 0.8pt solid var(--ink);
+  margin-bottom: 13pt;
 }
 .skill-group span { color: var(--soft); font-size: 8.8pt; }
 
@@ -272,6 +282,7 @@ ul.bullets li { margin-bottom: 2px; color: var(--soft); }
 
     <!-- ============ SIDE COLUMN ============ -->
     <aside class="side">
+      <img class="side-photo" src="../assets/ralph.png" alt="Ralph Lorence Racho" />
 
       <section>
         <h2>Core Skills</h2>

@@ -16,8 +16,11 @@ ralph-portfolio/
 
 ## The CV
 
-`assets/ralph-racho-cv.pdf` is generated, one page, A4. To change it, edit the
-CONTENT block in `cv/build-cv.ps1` and run:
+`assets/ralph-racho-cv.pdf` is generated, one page, A4, all text in black, with
+the portrait from `assets/ralph.png` embedded at the top of the right-hand
+column (the script crops it to 4:5 and re-encodes it as a JPEG image object, so
+swapping `ralph.png` and re-running is all it takes). To change the wording,
+edit the CONTENT block in `cv/build-cv.ps1` and run:
 
 ```powershell
 powershell -File cv\build-cv.ps1
