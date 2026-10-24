@@ -1,0 +1,14 @@
+# Normalise line endings for text, and keep binaries untouched.
+* text=auto eol=lf
+
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.mp4  binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
+
+# Windows-only script: keep CRLF so PowerShell is happy.
+*.ps1 text eol=crlf
