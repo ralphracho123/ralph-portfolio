@@ -244,11 +244,13 @@
   /* =======================================================
      Project previews
      The screenshot is the poster; the clip loads and plays
-     only when the card is on screen, on wide viewports, and
-     only if motion is welcome. Phones keep the still image.
+     once the card is on screen — phones included. Skipped
+     only when motion is unwelcome or data is precious.
      ======================================================= */
   var videos = document.querySelectorAll(".mockup__video");
-  var wantsVideo = window.matchMedia("(min-width: 721px)").matches && !reduceMotion;
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var saveData = !!(conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "")));
+  var wantsVideo = !reduceMotion && !saveData;
 
   if (videos.length && wantsVideo && "IntersectionObserver" in window) {
     var videoObserver = new IntersectionObserver(function (entries) {
@@ -256,20 +258,30 @@
         var video = entry.target;
         if (entry.isIntersecting) {
           if (!video.src) video.src = video.getAttribute("data-src");
+          // iOS only honours autoplay on a video it considers muted, and
+          // reads the property rather than the attribute at play() time.
+          video.muted = true;
           var played = video.play();
           if (played && played.catch) {
-            // Autoplay can be blocked; the poster image stays, which is fine.
-            played.catch(function () {});
+            // Low Power Mode and data savers refuse outright; the
+            // screenshot stays put, which is the right fallback.
+            played.catch(function () { video.classList.remove("is-playing"); });
           }
-          video.classList.add("is-playing");
         } else {
           video.pause();
           video.classList.remove("is-playing");
         }
       });
-    }, { threshold: 0.45 });
+    }, { threshold: 0.25 });
 
-    videos.forEach(function (v) { videoObserver.observe(v); });
+    videos.forEach(function (v) {
+      // Cross-fade only once a frame is genuinely on screen. Adding the
+      // class on intersection instead would punch a blank box through the
+      // screenshot while a phone was still fetching the clip.
+      v.addEventListener("playing", function () { v.classList.add("is-playing"); });
+      v.addEventListener("error", function () { v.classList.remove("is-playing"); });
+      videoObserver.observe(v);
+    });
   }
 
   /* =======================================================

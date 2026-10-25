@@ -77,9 +77,11 @@ wrong one on load.
 Hero lines mask up on load, the lede highlights draw in, sections and cards
 reveal on scroll, the stat figures count up, the timeline accent bars grow, a
 progress bar tracks the scroll, and the project screenshots cross-fade into
-short preview clips once a card is on screen (wide viewports only — phones keep
-the still image, so nothing heavy downloads on mobile data). All of it is
-disabled under `prefers-reduced-motion: reduce`.
+short preview clips once a card is on screen, phones included. Each clip is
+fetched only when its card scrolls into view, and the cross-fade waits for the
+first decoded frame, so a slow connection shows the screenshot rather than an
+empty box. Visitors on a data saver or a 2G connection keep the stills. All of
+it is disabled under `prefers-reduced-motion: reduce`.
 
 ## Responsiveness
 
